@@ -6,15 +6,19 @@ PYBIN    ?= python3.10
 VENV     := .venv
 PY       := $(VENV)/bin/python
 PIP      := $(VENV)/bin/pip
-PROMPT   ?= deep house warm pads 124 BPM
-DURATION ?= 30
-STEPS    ?= 8
-CFG      ?= 1.0
-OUT      ?= outputs/output.wav
-SEED     ?=
+PROMPT     ?= deep house warm pads 124 BPM
+PROMPT_FILE ?=
+DURATION   ?= 30
+STEPS      ?= 8
+CFG        ?= 1.0
+OUT        ?= outputs/output.wav
+SEED       ?=
 
 # Pass --seed only when SEED is set.
 SEED_ARG := $(if $(SEED),--seed $(SEED),)
+# Prefer a file when PROMPT_FILE is set (best for multiline lyric sheets);
+# otherwise pass PROMPT inline. generate.py sanitizes either way.
+PROMPT_ARG := $(if $(PROMPT_FILE),--prompt-file "$(PROMPT_FILE)","$(PROMPT)")
 
 .DEFAULT_GOAL := help
 
@@ -49,9 +53,9 @@ check: ## Verify env: token set, torch + MPS, deps importable
 print('torch', torch.__version__, '| mps', torch.backends.mps.is_available())"
 	@echo "OK - ready to generate."
 
-gen: ## Generate audio (uses PROMPT DURATION STEPS CFG OUT SEED)
+gen: ## Generate audio (uses PROMPT or PROMPT_FILE, DURATION STEPS CFG OUT SEED)
 	@test -d $(VENV) || { echo "Run 'make setup' first."; exit 1; }
-	$(PY) generate.py "$(PROMPT)" --duration $(DURATION) --steps $(STEPS) \
+	$(PY) generate.py $(PROMPT_ARG) --duration $(DURATION) --steps $(STEPS) \
 		--cfg-scale $(CFG) --out "$(OUT)" $(SEED_ARG)
 
 play: ## Play the last output (macOS afplay)
