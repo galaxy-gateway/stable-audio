@@ -6,3 +6,4 @@ outputs/
 *.wav
 .cache/
 .DS_Store
+output/
