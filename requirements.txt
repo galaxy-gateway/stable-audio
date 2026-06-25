@@ -1,0 +1,17 @@
+# 0.0.20 is the first release supporting stable-audio-3 architecture.
+# It requires Python >=3.10,<3.11 and pins torch==2.7.1 / torchaudio==2.7.1.
+stable-audio-tools==0.0.20
+
+# 0.0.20 imports these at module load (via lora) but does not list them as
+# core deps; install explicitly.
+pytorch_lightning
+soundfile
+
+# NOTE: PyWavelets is NOT pinned here. stable-audio-tools==0.0.20 hard-pins
+# PyWavelets==1.4.1, which breaks against numpy 2 (ABI error in pywt). It is
+# force-upgraded to >=1.7 in a SECOND pip step (see setup.sh / Makefile) to
+# sidestep the resolver conflict.
+
+# Model download + auth
+huggingface_hub
+python-dotenv
