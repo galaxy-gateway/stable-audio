@@ -1,0 +1,20 @@
+# Ambient transition / segue clips for gapless albums (~10s each).
+# Shape tag in the lead phrase drives the post-process fade in segue.py:
+#   riser   = fade-in only, peak held at the end (slams into next track)
+#   swell   = fade in and out, gentle wash
+#   drone   = soft fade-in, sustained tail
+#   downer  = winds down, fade-out to calm
+# Keep ideas distinct: vary texture, motion, register.
+
+riser tension sweep, white-noise uplifter swelling under rising synth drone, building anticipation, 120 BPM
+riser tape-stop reverse cymbal, accelerating tom rolls into a hard downbeat, urgent, 128 BPM
+riser granular pitch climb, shimmering ascending arpeggio, brightening into a peak, 140 BPM
+swell ambient pad bloom, warm analog chord fading in and out, weightless and clean, 70 BPM
+swell shimmer reverb wash, bowed glass tones cresting and receding, ethereal, 60 BPM
+swell choir breath, soft wordless voices rising then dissolving, sacred and airy, 65 BPM
+drone deep sub hum, slow evolving low pad with faint harmonic overtones, sustained, 50 BPM
+drone tape hiss texture, dusty warm sustained organ note, lo-fi and still, 55 BPM
+drone crystalline sustain, glassy held synth tone with slow tremolo, cold and pure, 60 BPM
+downer wind-down music box, slowing chimes resolving to a single soft note, melancholy, 80 BPM
+downer dub echo fade, decaying delayed chord stabs dissolving into silence, spacious, 90 BPM
+weird glitch interstitial, stuttered granular artifacts and pitched static settling to a hum, abstract, 100 BPM

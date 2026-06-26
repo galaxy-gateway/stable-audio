@@ -1,0 +1,11 @@
+# Ten high-fantasy tunes, 60s each, distinct flavors for transition testing.
+epic fantasy overture, heroic brass fanfare, soaring strings, thunderous timpani, triumphant and grand, key of D major, 120 BPM
+elven forest realm, ethereal female choir, harp glissandos, soft flute, luminous and serene, key of A major, 90 BPM
+dwarven mountain forge, deep war drums, low male chant, anvil percussion, sturdy and proud, key of E minor, 100 BPM
+dark sorcerer dungeon, ominous low brass, dissonant strings, eerie boy choir, foreboding, key of C minor, 80 BPM
+celtic village festival, lively fiddle and tin whistle, bodhran drum, plucked harp, joyful jig, key of G major, 130 BPM
+dragon's lair confrontation, blaring horns, frantic strings, pounding percussion, dangerous and vast, key of F minor, 150 BPM
+royal coronation hall, stately orchestral march, regal trumpets, ceremonial choir, noble and proud, key of B flat major, 95 BPM
+enchanted fairy glade, twinkling celesta and glockenspiel, gentle pizzicato, whimsical and magical, key of E major, 105 BPM
+frozen northern pass, lonely cor anglais, icy shimmering strings, distant horn calls, bleak and majestic, key of D minor, 70 BPM
+mystic ancient ruins, hypnotic hand percussion, exotic oboe, low drone, mysterious and timeless, key of A minor, 85 BPM
