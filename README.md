@@ -89,6 +89,11 @@ audio = model.generate(prompt="House music ... 124 BPM", duration=120)
 This project uses `stable-audio-tools` (the fully documented research path).
 Swap in `stable-audio-3` if you prefer the higher-level API.
 
+## Reference 
+
+- https://github.com/Stability-AI/stable-audio-tools
+- https://github.com/Stability-AI/stable-audio-metrics
+
 ## License
 
 Model under the [Stability AI Community License](https://stability.ai/license);

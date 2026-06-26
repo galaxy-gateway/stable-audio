@@ -1,0 +1,10 @@
+whimsical platformer overworld, bouncy marimba and xylophone melody, playful tuba bass, pizzicato strings, cheerful and cartoonish, 130 BPM
+sunny jungle level, tropical steel drums and bongos, jaunty woodwinds, light and adventurous, 125 BPM
+frozen snowy level, twinkling glockenspiel and celesta, gentle sleigh bells, icy and magical, 110 BPM
+swampy bog level, squelchy low bassoon, plucked banjo, quirky and murky, slow lurching 95 BPM
+desert ruins level, exotic oboe melody, hand percussion, mysterious and sandy, 115 BPM
+underwater level, dreamy vibraphone, floating flute lines, bubbly and serene, 100 BPM
+spooky haunted level, comedic creepy harpsichord, pizzicato tiptoe strings, playful spooky, 105 BPM
+lava factory level, driving brass stabs, mechanical clanking percussion, urgent and bold, 140 BPM
+boss battle, frantic full orchestra, pounding timpani, blaring horns, heroic and chaotic, 160 BPM
+victory jingle fanfare, triumphant brass and bells, joyful and celebratory, upbeat 135 BPM

@@ -69,6 +69,46 @@ def read_prompt(args) -> str:
     return ""
 
 
+def loop_heal(model, audio, sample_rate, sample_size, conditioning, *,
+              steps, cfg_scale, device, heal_seconds):
+    """Make `audio` (channels, samples) loop seamlessly via inpainting.
+
+    The diffusion seam is at the boundary audio[-1] -> audio[0]. We rotate the
+    clip by half its length so that boundary lands in the middle, inpaint a
+    short window across it (the model regenerates a smooth transition from the
+    surrounding context), then rotate back. The healed seam is now at sample 0,
+    so the clip loops with no discontinuity."""
+    n = audio.shape[-1]
+    half = n // 2
+    rot = torch.cat([audio[:, half:], audio[:, :half]], dim=-1)
+    seam_center = (n - half) / sample_rate          # where the old end/start now sits
+    start = max(0.0, seam_center - heal_seconds / 2)
+    end = seam_center + heal_seconds / 2
+    print(f"Loop-heal: inpainting seam window {start:.1f}-{end:.1f}s")
+    try:
+        healed = generate_diffusion_cond_inpaint(
+            model,
+            steps=steps,
+            cfg_scale=cfg_scale,
+            conditioning=conditioning,
+            sample_size=sample_size,
+            sampler_type="pingpong",
+            device=device,
+            inpaint_audio=(sample_rate, rot.to(device)),
+            inpaint_mask_start_seconds=start,
+            inpaint_mask_end_seconds=end,
+        )
+    except Exception as exc:  # model/API quirk - keep the un-healed clip
+        print(f"WARN: loop-heal failed ({exc}); returning un-healed audio.",
+              file=sys.stderr)
+        return audio
+    healed = rearrange(healed, "b d n -> d (b n)").to(audio.device)
+    h = healed.shape[-1]
+    half_h = h // 2
+    # rotate back by the same half so the healed seam returns to the boundary
+    return torch.cat([healed[:, half_h:], healed[:, :half_h]], dim=-1)
+
+
 def pick_device() -> str:
     if torch.cuda.is_available():
         return "cuda"
@@ -100,6 +140,12 @@ def main() -> int:
                     help="Classifier-free guidance scale (default 1.0).")
     ap.add_argument("--out", default="outputs/output.wav", help="Output WAV path.")
     ap.add_argument("--seed", type=int, default=None, help="Optional RNG seed.")
+    ap.add_argument("--loop", action="store_true",
+                    help="Generation-side seamless loop: after generating, rotate "
+                         "the track so its end/start seam sits mid-clip, inpaint-heal "
+                         "that window, then rotate back so it loops without a seam.")
+    ap.add_argument("--loop-heal-seconds", type=float, default=4.0,
+                    help="Width of the seam window to regenerate when --loop (default 4).")
     args = ap.parse_args()
 
     prompt = read_prompt(args)
@@ -139,7 +185,15 @@ def main() -> int:
         device=device,
     )
 
-    output = rearrange(output, "b d n -> d (b n)")
+    output = rearrange(output, "b d n -> d (b n)")  # (channels, samples) float
+
+    if args.loop:
+        output = loop_heal(
+            model, output, sample_rate, sample_size, conditioning,
+            steps=args.steps, cfg_scale=args.cfg_scale, device=device,
+            heal_seconds=args.loop_heal_seconds,
+        )
+
     output = (
         output.to(torch.float32)
         .div(torch.max(torch.abs(output)))

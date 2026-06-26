@@ -1,0 +1,100 @@
+peaceful pastoral village theme, gentle acoustic guitar and recorder, soft strings, nostalgic medieval fantasy, calm 90 BPM
+regal capital city theme, stately harpsichord and strings, dignified woodwinds, noble and grand, 100 BPM
+noble knights stronghold theme, proud French horn melody, marching snare, heroic and honorable, 110 BPM
+spooky swamp village theme, eerie low strings, sparse music box, creepy and forlorn, slow 70 BPM
+celtic seers village theme, lilting fiddle and harp, tin whistle, wistful folk melody, 105 BPM
+arabian desert city theme, exotic oud and hand drums, snake-charmer flute, sultry and warm, 95 BPM
+coastal fishing town theme, breezy flute and pizzicato strings, gentle wave-like rhythm, relaxed 88 BPM
+tropical jungle outpost theme, tribal hand drums and marimba, primal woodwinds, adventurous, 115 BPM
+snowy frontier village theme, cold soft piano and bells, hushed strings, lonely and serene, 80 BPM
+medieval wizard tower theme, mysterious harp arpeggios, ethereal choir pad, arcane and curious, 92 BPM
+lumbridge sunrise pastoral theme, gentle acoustic guitar and recorder, dewy morning calm, soft strings, 88 BPM
+varrock grand market theme, busy harpsichord and strings, regal brass flourishes, bustling and noble, 104 BPM
+falador white knight theme, proud French horn melody, marching snare, honorable and bright, 110 BPM
+draynor manor dread theme, eerie pipe organ, creaking low strings, gothic and uneasy, slow 68 BPM
+ardougne cathedral bells theme, solemn church bells and choir, stately strings, sacred and grand, 96 BPM
+al kharid bazaar theme, exotic oud and hand drums, sinuous flute, warm desert market, 98 BPM
+catherby seaside calm theme, breezy flute and pizzicato strings, lapping wave rhythm, relaxed 86 BPM
+karamja jungle drums theme, primal tribal percussion and marimba, wild woodwinds, adventurous, 116 BPM
+rellekka viking longhall theme, sturdy fiddle and frame drum, hearty male hum, rugged norse, 100 BPM
+yanille mage academy theme, mysterious harp arpeggios, soft choir pad, scholarly arcane, 92 BPM
+seers village folk dance theme, lively fiddle and tin whistle, clapping rhythm, joyful celtic, 124 BPM
+edgeville ruins lament theme, lonely cello melody, sparse piano, mournful and faded, slow 64 BPM
+port sarim docks theme, jaunty accordion and concertina, creaking ship ambience, sea-shanty feel, 108 BPM
+canifis gothic waltz theme, haunting violin waltz in 3/4, harpsichord, elegant and dark, 120 BPM
+burthorpe war camp theme, driving snare and brass, urgent strings, martial and tense, 132 BPM
+taverley druid grove theme, soft pan flute and harp, nature ambience, peaceful and mystical, 80 BPM
+lletya elven glade theme, delicate plucked harp and celesta, airy choir, ethereal and serene, 84 BPM
+prifddinas crystal city theme, shimmering glass bells and strings, luminous and majestic, 100 BPM
+menaphos golden city theme, opulent strings and oud, golden brass, lavish and sun-drenched, 102 BPM
+sophanem desert tomb theme, ominous low flute and rattles, dusty and ancient, slow 72 BPM
+shilo village tribal theme, wooden flutes and djembe, jungle birdsong, exotic and lively, 118 BPM
+tai bwo wannai feast theme, festive marimba and bongos, chanting rhythm, celebratory tribal, 126 BPM
+brimhaven pirate tavern theme, rowdy accordion and fiddle, stomping rhythm, drunken sea-shanty, 130 BPM
+east ardougne nobles theme, refined string quartet and harpsichord, dignified and prim, 98 BPM
+west ardougne plague theme, sickly detuned strings, distant tolling bell, bleak and oppressive, 60 BPM
+keldagrim dwarven forge theme, clanging anvil percussion, deep brass, industrious and heavy, 112 BPM
+dorgesh kaan cavern theme, dripping water ambience, low resonant pads, subterranean mystery, 70 BPM
+gunnarsgrunn barbarian theme, primal hand drums and chanting, raw and tribal, 122 BPM
+entrana monastery hymn theme, reverent choir and organ, gentle bells, sacred and tranquil, 76 BPM
+mcgrubors wood whimsy theme, playful pizzicato and woodwinds, light and curious, 114 BPM
+fishing guild harbor theme, calm acoustic guitar and flute, gentle gulls, easy coastal, 90 BPM
+wizards tower arcane theme, swirling arpeggiated synth and harp, eerie choir, magical, 94 BPM
+lumbridge swamp mist theme, muffled low woodwinds, distant frog ambience, murky and quiet, 66 BPM
+misthalin countryside theme, warm strings and recorder, rolling pastoral melody, gentle, 96 BPM
+asgarnia highlands theme, sweeping strings and horn, open windswept grandeur, 100 BPM
+kandarin meadows theme, bright flute and harp, sunny rolling melody, cheerful, 106 BPM
+relleka snowy port theme, cold soft piano and bells, hushed strings, lonely norse, 78 BPM
+trollheim mountain pass theme, heavy low brass and timpani, treacherous and looming, 92 BPM
+death plateau ascent theme, tense rising strings, distant horn, dangerous climb, 104 BPM
+white wolf mountain theme, icy strings and howling flute, perilous and frigid, 88 BPM
+goblin village stomp theme, comedic bassoon and clumsy percussion, silly and bouncy, 120 BPM
+dwarven mine depths theme, echoing pickaxe percussion, low drone, dim and cavernous, 84 BPM
+mining guild echoes theme, rhythmic metallic taps, steady bass, industrious underground, 100 BPM
+crafting guild bustle theme, busy plucked strings and woodblock, productive and lively, 110 BPM
+cooks guild kitchen theme, jovial pizzicato and flute, clattering rhythm, warm and homey, 116 BPM
+champions guild honor theme, noble brass fanfare, proud strings, valiant, 108 BPM
+heroes guild triumph theme, soaring horns and timpani, victorious and grand, 112 BPM
+legends guild epic theme, sweeping full orchestra, heroic choir, legendary, 100 BPM
+monastery of saradomin theme, radiant choir and organ, holy strings, devout and bright, 80 BPM
+zamorak temple dark theme, ominous low choir and drums, menacing brass, evil ritual, 86 BPM
+guthix balance serene theme, balanced harp and strings, calm nature pads, peaceful equilibrium, 82 BPM
+armadyl skyward theme, airy high strings and flute, soaring and lofty, 98 BPM
+bandos warcamp brutal theme, pounding war drums and snarling brass, savage and brutal, 134 BPM
+zaros ancient mystery theme, deep resonant drone and whispering choir, vast and enigmatic, 64 BPM
+desert mining camp theme, weary acoustic guitar and harmonica, sun-baked and tired, 90 BPM
+nardah oasis theme, soothing flute and harp, trickling water, restful desert haven, 84 BPM
+pollnivneach siesta theme, lazy oud and soft percussion, drowsy afternoon heat, 76 BPM
+uzer ruins haunting theme, hollow flute and distant chimes, abandoned and eerie, 68 BPM
+ullek lost city theme, dusty strings and low drums, forgotten and somber, 72 BPM
+quidamortem frontier theme, rugged fiddle and hand drum, wild untamed frontier, 112 BPM
+hosidius vineyard theme, warm acoustic guitar and mandolin, sunny pastoral harvest, 102 BPM
+lovakengj volcano theme, rumbling low brass and timpani, sparks and steam, fiery industrial, 120 BPM
+shayzien military theme, disciplined snare and brass, marching and resolute, 124 BPM
+arceuus dark arts theme, ghostly choir and harp, violet mystery, necromantic and cold, 78 BPM
+piscarilius fishery theme, salty accordion and fiddle, creaking docks, working harbor, 106 BPM
+great kourend castle theme, grand strings and brass, majestic and unifying, 100 BPM
+kebos lowlands theme, mysterious woodwinds and soft drums, wild marshland, 88 BPM
+mount karuulm sulphur theme, hissing ambience and low drone, volcanic and acrid, 80 BPM
+fossil island jungle theme, lush marimba and birdsong, ancient overgrown wonder, 110 BPM
+mushroom forest fungal theme, quirky bassoon and bells, bouncy and surreal, 114 BPM
+tirannwn forest elven theme, delicate harp and pan flute, deep verdant magic, 86 BPM
+isafdar woodland theme, soft strings and plucked harp, dappled forest light, 90 BPM
+mourning end sorrow theme, grieving cello and choir, deep loss and longing, slow 60 BPM
+poison waste desolate theme, sickly drones and detuned bells, toxic and barren, 62 BPM
+feldip hills wild theme, rustic fiddle and frame drum, untamed wilderness, 116 BPM
+oo glog spa theme, soothing chimes and soft flute, bubbling mud, restful and quirky, 74 BPM
+gnome stronghold treetop theme, whimsical flute and pizzicato, breezy treetop village, 118 BPM
+tree gnome village theme, playful recorder and harp, light leafy melody, 112 BPM
+grand tree canopy theme, airy strings and woodwinds, lofty and serene, 96 BPM
+ape atoll monkey theme, comedic bongos and woodblocks, mischievous jungle, 122 BPM
+mos le harmless pirate theme, rollicking accordion and fiddle, swashbuckling, 128 BPM
+harmony island peace theme, gentle solo piano and strings, monastic calm, slow 70 BPM
+dragontooth island fog theme, mournful horn and low strings, foggy and haunted, 66 BPM
+waterbirth island norse theme, stark fiddle and frame drum, cold viking shore, 98 BPM
+miscellania royal theme, regal strings and harpsichord, courtly and noble, 102 BPM
+etceteria kingdom theme, stately woodwinds and bells, modest royal charm, 100 BPM
+jatizso ice fortress theme, frigid brass and low strings, harsh and fortified, 92 BPM
+neitiznot fishing isle theme, hardy fiddle and accordion, plucky island spirit, 110 BPM
+lunar isle mystic theme, dreamy bells and ethereal choir, moonlit and arcane, 80 BPM
+fremennik province saga theme, epic horn and frame drum, sweeping norse saga, 104 BPM

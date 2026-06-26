@@ -23,9 +23,13 @@ track so the set has variety, not N copies.
    nohup scripts/batch_generate.sh <name> prompts/<name>.txt 60 > output/<name>_batch.log 2>&1 &
    ```
    Args: `<name> <prompts_file> [DUR=60] [STEPS=8] [SEED_BASE=100]`.
-   Output → `output/<name>/<name>_NN.wav`. Seed for track i = `SEED_BASE+i`
-   (reproducible). Re-run with a different `SEED_BASE` for fresh variations of
-   the same prompts.
+   Output → `output/<name>/<name>_NN_<slug>.wav`. The `<slug>` names the
+   musical idea: `batch_generate.sh` auto-derives it from each prompt's lead
+   phrase (everything before the first comma), lowercased and hyphenated — so
+   write that lead phrase as the track's identity (e.g. `epic fantasy
+   orchestral, ...`, `haunted music box, ...`). `NN` preserves order and seed
+   mapping. Seed for track i = `SEED_BASE+i` (reproducible). Re-run with a
+   different `SEED_BASE` for fresh variations of the same prompts.
 
 3. **Monitor progress** with the Monitor tool — emit per saved track, stop on
    done/error. Filter must cover failures, not just `Saved`:
@@ -42,7 +46,8 @@ track so the set has variety, not N copies.
 
 4. **Verify and report** — `ls output/<name>/*.wav | wc -l` matches requested
    count. Give the user a table (track / subgenre / seed) and the preview
-   command: `make play OUT=output/<name>/<name>_01.wav`.
+   command (filename now includes the slug, so glob it):
+   `make play OUT="$(ls output/<name>/<name>_01_*.wav)"`.
 
 ## Notes
 
