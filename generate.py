@@ -109,6 +109,39 @@ def loop_heal(model, audio, sample_rate, sample_size, conditioning, *,
     return torch.cat([healed[:, half_h:], healed[:, :half_h]], dim=-1)
 
 
+def trim_quiet_tail(audio, sample_rate, *, thresh_db=-32.0,
+                    keep_seconds=0.4, min_seconds=8.0):
+    """Cut trailing near-silence so the track ends tight.
+
+    The model renders into a fixed 120s buffer; with a shorter `seconds_total`
+    it packs the content early then decays into a long quiet reverb tail. We
+    find the last 50ms window whose RMS rises above `thresh_db` below the track
+    peak, keep `keep_seconds` of natural decay after it, and drop the rest.
+    `min_seconds` guards against over-trimming a genuinely sparse track.
+
+    audio: (channels, samples) float tensor. Returns the trimmed tensor."""
+    n = audio.shape[-1]
+    mono = audio.abs().mean(dim=0)                  # (samples,)
+    win = max(1, int(0.05 * sample_rate))
+    frames = mono[: (n // win) * win].unfold(0, win, win)  # (nframes, win)
+    rms = frames.pow(2).mean(dim=1).sqrt()
+    peak = rms.max()
+    if peak <= 0:
+        return audio
+    thresh = peak * (10.0 ** (thresh_db / 20.0))
+    above = (rms > thresh).nonzero()
+    if len(above) == 0:
+        return audio
+    last = int(above[-1].item())
+    end = (last + 1) * win + int(keep_seconds * sample_rate)
+    end = max(end, int(min_seconds * sample_rate))
+    end = min(n, end)
+    if end < n:
+        print(f"Trim-tail: {n / sample_rate:.1f}s -> {end / sample_rate:.1f}s "
+              f"(cut {(n - end) / sample_rate:.1f}s of quiet)")
+    return audio[:, :end]
+
+
 def pick_device() -> str:
     if torch.cuda.is_available():
         return "cuda"
@@ -140,6 +173,11 @@ def main() -> int:
                     help="Classifier-free guidance scale (default 1.0).")
     ap.add_argument("--out", default="outputs/output.wav", help="Output WAV path.")
     ap.add_argument("--seed", type=int, default=None, help="Optional RNG seed.")
+    ap.add_argument("--trim-tail", action="store_true",
+                    help="Cut the trailing quiet reverb tail so the track ends "
+                         "tight (the model pads short clips with a long decay).")
+    ap.add_argument("--trim-db", type=float, default=-32.0,
+                    help="Tail-trim threshold in dB below peak (default -32).")
     ap.add_argument("--loop", action="store_true",
                     help="Generation-side seamless loop: after generating, rotate "
                          "the track so its end/start seam sits mid-clip, inpaint-heal "
@@ -186,6 +224,11 @@ def main() -> int:
     )
 
     output = rearrange(output, "b d n -> d (b n)")  # (channels, samples) float
+
+    # Trim before loop-heal: a tight end means the seam joins content->content,
+    # not content->silence.
+    if args.trim_tail:
+        output = trim_quiet_tail(output, sample_rate, thresh_db=args.trim_db)
 
     if args.loop:
         output = loop_heal(

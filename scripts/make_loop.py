@@ -22,6 +22,32 @@ import numpy as np
 import soundfile as sf
 
 
+def trim_quiet_tail(audio: np.ndarray, sr: int, *, thresh_db: float = -32.0,
+                    keep_s: float = 0.4, min_s: float = 8.0) -> np.ndarray:
+    """Cut trailing near-silence. audio: (samples, channels).
+
+    Finds the last 50ms window whose RMS rises above `thresh_db` below the peak,
+    keeps `keep_s` of decay after it, drops the rest. `min_s` guards a sparse
+    track from being gutted. Crossfade-looping wants this first, else the seam
+    wraps the dead reverb tail back onto the loud head."""
+    mono = np.abs(audio).mean(axis=1)
+    n = mono.shape[0]
+    win = max(1, int(0.05 * sr))
+    nf = n // win
+    if nf < 1:
+        return audio
+    rms = np.sqrt((mono[: nf * win].reshape(nf, win) ** 2).mean(axis=1))
+    peak = rms.max()
+    if peak <= 0:
+        return audio
+    above = np.nonzero(rms > peak * (10.0 ** (thresh_db / 20.0)))[0]
+    if len(above) == 0:
+        return audio
+    end = int((above[-1] + 1) * win + keep_s * sr)
+    end = min(n, max(end, int(min_s * sr)))
+    return audio[:end]
+
+
 def equal_power_loop(audio: np.ndarray, sr: int, xfade_s: float) -> np.ndarray:
     """Overlap the last xfade seconds onto the first xfade seconds.
 
@@ -61,6 +87,10 @@ def main() -> int:
                     help="Bar count to trim to (assumes 4/4). Needs --bpm.")
     ap.add_argument("--out", default=None,
                     help="Output path (default: <input>_loop.wav).")
+    ap.add_argument("--trim-tail", action="store_true",
+                    help="Cut the trailing quiet reverb tail before looping.")
+    ap.add_argument("--trim-db", type=float, default=-32.0,
+                    help="Tail-trim threshold in dB below peak (default -32).")
     args = ap.parse_args()
 
     matches = glob.glob(args.input)
@@ -70,6 +100,11 @@ def main() -> int:
     path = sorted(matches)[0]
 
     audio, sr = sf.read(path, always_2d=True)  # (samples, channels), float64
+
+    if args.trim_tail:
+        before = audio.shape[0] / sr
+        audio = trim_quiet_tail(audio, sr, thresh_db=args.trim_db)
+        print(f"Trim-tail: {before:.1f}s -> {audio.shape[0] / sr:.1f}s")
 
     if args.bpm and args.bars:
         bar_samples = int(round((60.0 / args.bpm) * 4 * args.bars * sr))

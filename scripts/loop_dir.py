@@ -23,7 +23,7 @@ import soundfile as sf
 
 # reuse the core crossfade from make_loop
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from make_loop import equal_power_loop  # noqa: E402
+from make_loop import equal_power_loop, trim_quiet_tail  # noqa: E402
 
 
 def slugify(text: str) -> str:
@@ -63,6 +63,10 @@ def main() -> int:
                     help="Trim to the largest whole bar count that fits each track "
                          "(per-file, from its BPM and length). Needs --prompts.")
     ap.add_argument("--prompts", default=None, help="Prompts file to read per-track BPM from.")
+    ap.add_argument("--trim-tail", action="store_true",
+                    help="Cut each track's trailing quiet reverb tail before looping.")
+    ap.add_argument("--trim-db", type=float, default=-32.0,
+                    help="Tail-trim threshold in dB below peak (default -32).")
     args = ap.parse_args()
 
     use_bars = (args.bars or args.auto_bars)
@@ -78,6 +82,9 @@ def main() -> int:
     for path in files:
         audio, sr = sf.read(path, always_2d=True)
         x = int(round(args.xfade * sr))
+
+        if args.trim_tail:
+            audio = trim_quiet_tail(audio, sr, thresh_db=args.trim_db)
 
         if use_bars:
             bpm = bpm_map.get(file_slug(path))

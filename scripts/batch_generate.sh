@@ -29,6 +29,11 @@ DUR=${3:-60}
 STEPS=${4:-8}
 SEED_BASE=${5:-100}
 SKIP=${6:-0}
+# Cut the trailing quiet reverb tail so tracks end tight. On by default;
+# disable with TRIM=0 scripts/batch_generate.sh ...
+TRIM=${TRIM:-1}
+TRIM_ARGS=()
+[ "$TRIM" = "1" ] && TRIM_ARGS+=(--trim-tail)
 
 OUTDIR="output/$NAME"
 mkdir -p "$OUTDIR"
@@ -52,7 +57,7 @@ while IFS= read -r p || [ -n "$p" ]; do
   out=$(printf "%s/%s_%02d_%s.wav" "$OUTDIR" "$NAME" "$i" "$slug")
   echo "=== [$i] $out ==="
   python generate.py "$p" --duration "$DUR" --steps "$STEPS" \
-    --seed "$((SEED_BASE+i))" --out "$out"
+    --seed "$((SEED_BASE+i))" --out "$out" "${TRIM_ARGS[@]}"
 done < "$PROMPTS_FILE"
 
 echo "DONE. $i files in $OUTDIR/"
