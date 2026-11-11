@@ -96,5 +96,5 @@ Swap in `stable-audio-3` if you prefer the higher-level API.
 
 ## License
 
-Model under the [Stability AI Community License](https://stability.ai/license);
+The code in this repository is [MIT](LICENSE). Model weights are not part of this repo and are governed by the upstream model license: model under the [Stability AI Community License](https://stability.ai/license);
 commercial use requires review. Includes Google T5Gemma under Gemma Terms.
